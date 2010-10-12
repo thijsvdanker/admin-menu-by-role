@@ -1,0 +1,6 @@
+; $Id$
+name = Admin menu by role
+description = Provides a role based admin_menu management system
+package = Administration
+core = 6.x
+dependencies[] = admin_menu

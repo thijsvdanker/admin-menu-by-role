@@ -1,0 +1,51 @@
+<?php
+
+/** Implementation of hook_install().
+ * 
+ */
+function admin_menu_by_role_install(){
+	drupal_install_schema('admin_menu_by_role');
+}
+/**
+ * Implementation of hook_uninstall().
+ */
+function admin_menu_by_role_uninstall(){
+	drupal_uninstall_schema('admin_menu_by_role');
+}
+
+/**
+ * Implemenation of hook_schema().
+ */
+function admin_menu_by_role_schema(){
+	return array(
+		'admin_menu_role' => array(
+	      'description' => 'Stores admin_menu - role association. Admin menu configuration per user role.',
+	      'fields' => array(
+	        'rid' => array(
+	          'type'        => 'int',
+	          'unsigned'    => TRUE,
+	          'not null'    => TRUE,
+	          'description' => 'Role id reference.',
+	        ),
+	        'name' => array(
+	          'type'        => 'varchar',
+	          'length'      => 32,
+	          'not null'    => TRUE,
+	          'description' => 'Menu name reference.',
+	        ),
+	        'weight' => array(
+	          'type'        => 'int',
+	          'not null'    => TRUE,
+	          'default'     => 0,
+	          'description' => 'Role id reference.',
+	        ),
+	      ),
+	      'primary key' => array('rid'),
+	      'foreign keys' => array(
+	        'name'  => array('menu_custom' => 'menu_name'),
+	        'rid'   => array('role' => 'rid'),
+	      ),
+	    ),
+	);
+}
+    
