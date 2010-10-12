@@ -21,14 +21,6 @@ function admin_menu_by_role_settings_form(&$form_state) {
   	$admin_menu_id[$menu['menu_name']] = $id;
   	$admin_menu_options[$id++] = $menu['title'];
   }
-//  $toolbars = _toolbar_get_toolbars();
-//  $toolbars_options[0] = t('disabled');
-//  $id = 1;
-//  
-//  while ( list($key, $value) = each($toolbars) ) {
-//    $toolbars_id[$key] = $id;
-//    $toolbars_options[$id++] = $value;
-//  }
 
   $max_weight = db_result(db_query("SELECT MIN(weight) FROM {admin_menu_role}"));
   if ( FALSE === $max_weight ) {
@@ -174,7 +166,7 @@ function theme_admin_menu_by_role_settings_form($form) {
     $rows[] = array('data' => $row, 'class' => 'draggable');
   }
   if (empty($rows)) {
-//    $empty_message = t('No toolbars found, !add.', array('!add' => l(t('Add toolbar'), 'admin/build/toolbar/add')));
+    $empty_message = t('No menu found');
     $rows[] = array(array('data' => $empty_message, 'colspan' => '3'));
   }
   $header = array(t('Role'), t('Menu'), t('Weight'));
