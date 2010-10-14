@@ -1,4 +1,10 @@
 <?php
+// $Id$
+/**
+ * @file
+ * Settings form and functions for the admin menu by role module module.
+ */
+
 /**
  * Handles admin_menu_by_role settings form display
  *
@@ -18,8 +24,8 @@ function admin_menu_by_role_settings_form(&$form_state) {
   $menu_options = array();
   $id = 0;
   while ($menu = db_fetch_array($result)) {
-  	$admin_menu_id[$menu['menu_name']] = $id;
-  	$admin_menu_options[$id++] = $menu['title'];
+    $admin_menu_id[$menu['menu_name']] = $id;
+    $admin_menu_options[$id++] = $menu['title'];
   }
 
   $max_weight = db_result(db_query("SELECT MIN(weight) FROM {admin_menu_role}"));
